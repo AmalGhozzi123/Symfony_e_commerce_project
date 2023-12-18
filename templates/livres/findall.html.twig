@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="container mt-3">
+<h1 style="text-align:center"><b>Nos Livres</b></h1><br>
+<table class="table table">
+<tr>
+<th>Id</th>
+<th>Libelle</th>
+<th>Résumé</th>
+<th>Prix</th>
+<th>Image</th>
+<th>Editeur</th>
+<th>Date édition</th>
+<th>Catégorie</th>
+<th colspan="4">Action</th>
+</tr>
+{% for livre in livres %}
+<tr>
+<td>{{livre.id}}</td>
+<td>{{livre.libelle}}</td>
+<td>{{livre.resume}}</td>
+<td>{{livre.prix}}</td>
+<td>{{livre.image}}</td>
+<td>{{livre.editeur}}</td>
+<td>{{livre.dateEdition|date('d-m-y')}}</td>
+<td>{{livre.categorie.libelle}}</td>
+<td> 
+<a href ="{{path('Find_livres',{'id':livre.id})}}">Détail</a>
+<a href ="{{path('delete_livre',{'id':livre.id})}}">Supprimer</a>
+<a href ="{{path('update_livre',{'id':livre.id})}}">Modifier</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="row">
+{% for livre in livres %}
+    
+<div class="col-4 mt-6">
+<div class="card">
+<image src="https://picsum.photos/200/?random=" alt="image">
+
+<div class="card-body">
+<!--<h4  class="card-title">Livre 1 (100DT)</h4>-->
+<h4  class="card-title">{{livre.libelle}} ({{livre.prix}}DT)</h4>
+<h5> Catégorie : {{livre.categorie.libelle}}</h5>
+<p class="card-text">Editeur : {{livre.editeur}}<br>
+                     Date : {{livre.dateEdition|date('d-m-y')}}</p>
+    <a href="#" class="btn btn-success btn-sm"><i class="fas fa-shopping-cart"></i>Ajouter au panier</a>
+    <a href="#" class="btn btn-primary btn-sm">Voir Détail</a>
+       <!--a.btn.btn-success.btn-sm-->
+</div>
+</div>
+
+</div>
+{% endfor %}
+
+{% endblock %}
