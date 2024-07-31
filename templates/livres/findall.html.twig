@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LivresController!{% endblock %}
+
+{% block body %}
+<h1><b>Nos  Livres</b></h1>
+<table border="1">
+<tr><th>Id</th>
+<th>Libelle</th>
+<th>Resumé</th>
+<th>Prix</th>
+<th>Image</th>
+<th>Editeur</th>
+<th>Datedition</th>
+<th>Categorie</th></tr>
+{% for livre in livres %}
+<tr><td>{{livre.id}}</td>
+<td>{{livre.libelle}}</td>
+<td>{{livre.resume}}</td>
+<td>{{livre.prix}}</td>
+<td>{{livre.image}}</td>
+<td>{{livre.editeur}}</td>
+<td>{{livre.dateedition|date('d-m-y')}}</td>
+<td>{{livre.categorie.libelle}}</td>
+<td><a href="{{path('find_livre',{'id':livre.id})}}">Detail</a>
+<a href="{{path('delete_livre',{'id':livre.id})}}">Supprimer</a>
+<a href="{{path('update_livre',{'id':livre.id})}}">Modifier</a></td></tr>
+{% endfor %}
+</table>
+{% endblock %}
